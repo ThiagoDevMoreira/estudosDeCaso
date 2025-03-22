@@ -13,12 +13,12 @@ A própria linguagem nunca cria mais do que um único objeto `printer`. Na tenta
 Utiliza-se assim:
 
 ```vb6
-' configurações de conexão com a impressora
+' configurações de escolha da impressora
 printer.font_name = "arial"
 printer.font_size = 12
 printer.bold = True
 printer.print "Esta é a linha impressa: " & com_esta_variavel
-printer.end ' esta é a linha que manda o comando para a impressora
+printer.EndDoc ' esta é a linha que manda o comando para a impressora
 ```
 
 Note que são necessárias muitas linhas de código para obter uma única linha impressa.
@@ -43,7 +43,7 @@ printer.print "o valor deste produto é: " & valor_do_produo_com_desconto & "."
 if exibir_desconto then
 	printer.print "este produto tem: " & valor_do_desconto & "% de desconto."
 end if
-printer.end
+printer.EndDoc
 ```
 
 Mas, ao longo dos anos acumularam-se as mudanças, soluções e ajustes simples e práticos.

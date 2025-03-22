@@ -1,13 +1,5 @@
-'
-'
-' composição de mensagens para whatsapp
-' o problema da pizza
-' estratégia para impressão de varios tipos de cupom
-' a sintese da lógica
-' cache rústico
-
 # Estudo de caso:
-## 
+## Impressão Inteligente em Sistema Legado
 Em VB6 temos o objeto `printer`: é nativo da linguagem, global e único. A própria linguagem nunca cria mais do que um único objeto `printer`. Na tentativa de `set este_eh_um_novo_printer = new printer`, a variável `este_eh_um_novo_printer` torna-se apenas uma nova referência ao único objeto `printer` do sistema.
 
 É o `printer` que recebe todas as indicações de tamanho e características de estilo a ser utilizado (com muitas restrições! Considerando a capacidade de estilizar texto atualmente) e não tem métodos nativos para alinhar o texto nem para quebra de linhas.

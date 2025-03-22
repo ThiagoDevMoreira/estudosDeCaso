@@ -1,6 +1,10 @@
-# Estudo de caso:
+# Estudo de caso
+
 ## Impressão Inteligente em Sistema Legado
-Em VB6 temos o objeto `printer`: é nativo da linguagem, global e único. A própria linguagem nunca cria mais do que um único objeto `printer`. Na tentativa de `set este_eh_um_novo_printer = new printer`, a variável `este_eh_um_novo_printer` torna-se apenas uma nova referência ao único objeto `printer` do sistema.
+
+Em VB6 temos o objeto `printer`: é nativo da linguagem, global e único.
+
+A própria linguagem nunca cria mais do que um único objeto `printer`. Na tentativa de `set este_eh_um_novo_printer = new printer`, a variável `este_eh_um_novo_printer` torna-se apenas uma nova referência ao único objeto `printer` do sistema.
 
 É o `printer` que recebe todas as indicações de tamanho e características de estilo a ser utilizado (com muitas restrições! Considerando a capacidade de estilizar texto atualmente) e não tem métodos nativos para alinhar o texto nem para quebra de linhas.
 
@@ -46,29 +50,31 @@ Mas, ao longo dos anos acumularam-se as mudanças, soluções e ajustes simples 
 
 Deparei-me com 2^3 condições `if-elseif-else` cada uma delas com outras 2^4 como "sub-condições", onde se emaranhavam os códigos de formatação (muitas vezes definidas no corpo principal do código, outras definidas em funções externas), com dados vindo diretamente do banco de dados, outros dados vindos de flags globais do sistema, outros dados vindos diretamente da interface gráfica... e ainda validações e matemáticas correspondentes às regras de negócio de cada uma das condições, onde a lógica, o propósitos e as responsabilidades eram bichos estranhos.
 
-Motivação para o trabalho: cliente final reclamou que "as contas no papel impresso não batem com a transação comercial realizada"
+**Motivação para o trabalho:** cliente final reclamou que "as contas no papel impresso não batem com a transação comercial realizada"
 
-Desafio aceito, vamos construir um refúgio no meio deste campo agreste. Adoro "sujar as mãos", prazo de 10 dias úteis, ótimo "bastante tempo" incuído nesse tempo o plantão de hotfixes, a realização de bugfixes prioritários e o tempo necessário para o pessoal de QA fazer os testes não-automatizados.
+Desafio aceito! Vamos construir um refúgio no meio deste campo agreste. Adoro "sujar as mãos", prazo de 10 dias úteis, ótimo "bastante tempo" incuído nesse tempo o plantão de hotfixes, a realização de bugfixes prioritários e o tempo necessário para o pessoal de QA fazer os testes não-automatizados.
 
-Objetivo principal: fazer que as "contas batam" no caso apontado pelo cliente.
-Objetivo secundário: que a solução para o caso específico possa ser reutilizada para todos os casos de impressão do sistema, sem repetição de código e cuidando da sanidade emocional dos próximos desenvolvedores que visitem esta região.
+**Objetivo principal:** fazer que as "contas batam" no caso apontado pelo cliente.
 
-Acredito que os desenvolvedores anteriores se preocuparam apenas com o objetivo principal, seja por falta de prazo adequado, capacidade ou pagamento...
+**Objetivo secundário:** que a solução para o caso específico possa ser reutilizada para todos os casos de impressão do sistema, sem repetição de código e cuidando da sanidade emocional dos próximos desenvolvedores que visitem esta região.
 
-Planejamento!
+> Acredito que os desenvolvedores anteriores se preocuparam apenas com o objetivo principal, seja por falta de prazo adequado, capacidade ou pagamento...
 
-Dia 1: dia de avaliação, análise e mapeamento.
-Dia 2: definição da abordagem: arquitetura MVC, estrutura inspirada no padrão Strategy.
+### Planejamento!
 
-	Obs sobre a implementaçaõ do MCV: Neste caso, o View é o próprio objeto VB.Printer (pessoalmente acho que aqui está o maior pulo do gato! A cereja do bolo! O tal do pensar fora da caixa). O Controller é a classe com função de "Contexto" do Strategy (as classes de estratégia devem ser consideradas conceitualmente como extenção do controller, pois vão consumir o model, coisa que é feita naturalmente pelo controller) e o Model é a classe que lida com as entidades do banco de dados e implementa a "matemática" das regras de negócio. Nesta estrutura específica o controller/contexto recebe as solicitações do sistema, conduz e organiza o fluxo e delega todo o processamento para as estratégias.
+* Dia 1: dia de avaliação, análise e mapeamento.
+* Dia 2: definição da abordagem: arquitetura MVC, estrutura inspirada no padrão Strategy.
 
-	Tarefas:
-	A. Desenvolver uma nova estrutura de classes para a funcionalidade de impressão conforme o padrão Strategy para a gestão de das solicitações de impressão e ser consumida pelo sistema sempre que precisar de uma impressão.
+> Obs sobre a implementaçaõ do MCV: Neste caso, o View é o próprio objeto VB.Printer (pessoalmente acho que aqui está o maior-pulo-do-gato! A cereja-do-bolo! O tal do pensar-fora-da-caixa!). O Controller é a classe com função de "Contexto" do Strategy (as classes de estratégia devem ser consideradas conceitualmente como extenção do controller, pois vão consumir o model, coisa que é feita naturalmente pelo controller) e o Model é a classe que lida com as entidades do banco de dados e implementa a "matemática" das regras de negócio. Nesta estrutura específica o controller/contexto recebe as solicitações do sistema, conduz e organiza o fluxo e delega todo o processamento para as estratégias.
+
+**Tarefas:**
+
+A. Desenvolver uma nova estrutura de classes para a funcionalidade de impressão conforme o padrão Strategy para a gestão de das solicitações de impressão e ser consumida pelo sistema sempre que precisar de uma impressão.
 	
-	B. Desenvolver uma classe para cada uma das "estratégias" de impressão.
+B. Desenvolver uma classe para cada uma das "estratégias" de impressão.
 	
-	C. Desenvolver uma classe que exponha as "peças" que vão compor o layout de impressão (como se fosse uma biblioteca de componentes de frontend) para a elaboração granlar do layout final que será impresso. Esta biblioteca é consumida pelas classes de "estratégias de impressão". A relação entre esta biblioteca e as estratégias se dá nos moldes do padrão Template.
+C. Desenvolver uma classe que exponha as "peças" que vão compor o layout de impressão (como se fosse uma biblioteca de componentes de frontend) para a elaboração granlar do layout final que será impresso. Esta biblioteca é consumida pelas classes de "estratégias de impressão". A relação entre esta biblioteca e as estratégias se dá nos moldes do padrão Template.
 		
-	B.Desenvolver uma classe que lide com as entidades do banco de dados para incluir as validações e campos calculados necessários à funcionalidade de impressão, o model é consumido pelas estratégias, esta é a classe model (mvc) e é consumida pelas estratégias.
+D.Desenvolver uma classe que lide com as entidades do banco de dados para incluir as validações e campos calculados necessários à funcionalidade de impressão, o model é consumido pelas estratégias, esta é a classe model (mvc) e é consumida pelas estratégias.
 	
 Dia 3 ao 10: Mãos na massa, fazendo vb6. Com um plano destes qualqer linguagem funciona! ;)

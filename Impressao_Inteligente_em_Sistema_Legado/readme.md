@@ -67,6 +67,8 @@ Desafio aceito! Vamos construir um refúgio no meio deste campo agreste. Adoro "
 
 > Obs sobre a implementaçaõ do MCV: Neste caso, o View é o próprio objeto VB.Printer (pessoalmente acho que aqui está o maior-pulo-do-gato! A cereja-do-bolo! O tal do pensar-fora-da-caixa!). O Controller é a classe com função de "Contexto" do Strategy (as classes de estratégia devem ser consideradas conceitualmente como extenção do controller, pois vão consumir o model, coisa que é feita naturalmente pelo controller) e o Model é a classe que lida com as entidades do banco de dados e implementa a "matemática" das regras de negócio. Nesta estrutura específica o controller/contexto recebe as solicitações do sistema, conduz e organiza o fluxo e delega todo o processamento para as estratégias.
 
+![image](https://github.com/user-attachments/assets/46380a48-d3d3-4df3-bbb8-c1b587480eca)
+
 **Tarefas:**
 
 A. Desenvolver uma nova estrutura de classes para a funcionalidade de impressão conforme o padrão Strategy para a gestão de das solicitações de impressão e ser consumida pelo sistema sempre que precisar de uma impressão.

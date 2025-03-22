@@ -78,3 +78,5 @@ C. Desenvolver uma classe que exponha as "peças" que vão compor o layout de im
 D.Desenvolver uma classe que lide com as entidades do banco de dados para incluir as validações e campos calculados necessários à funcionalidade de impressão, o model é consumido pelas estratégias, esta é a classe model (mvc) e é consumida pelas estratégias.
 	
 Dia 3 ao 10: Mãos na massa, fazendo vb6. Com um plano destes qualqer linguagem funciona! ;)
+
+PErcorra o repositório e veja uma amostra de código deste trabalho, as regras de negócio e detalhes de implementação foram retirados do códigos por razões de confidencialidade e privacidade para com o cliente.

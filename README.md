@@ -9,7 +9,9 @@ https://drive.google.com/file/d/1--ZuA_RRptEVyunUdUDErwmiq-hPst82/view?usp=shari
 
 **Próximos:**
 29-03-2025 Complexidade Escondida na Pizza
+
 05-03-2025 Integração VB6 <=> Whatsapp
+
 12-03-2025 Cache e Performance
 
 Bem vindos!

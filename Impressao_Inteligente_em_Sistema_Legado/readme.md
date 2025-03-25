@@ -1,6 +1,5 @@
 ## Atualizações
 * 25-03-2025: amostra de código da classe controller/context, em VB6.
-* 
 ---
 
 # Estudo de caso

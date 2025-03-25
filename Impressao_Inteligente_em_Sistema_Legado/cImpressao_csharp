@@ -1,0 +1,37 @@
+// # classe cImpressao, C#
+// do ponto de vista da arquitetura MVC, esta é a classe prncipal da estrutura do 'Controller'
+// do ponto de vista do pattern esta é classe principal do strategy, que cumpre o papel de 'Context'
+// esta é a classe que deve ser chamada pelo sistema sempre que precisar utilizar a funcionalidade
+// de impressão, salvo quando se trata de relatórios vinculados à ferramentas de relatório externas.
+
+public class cImpressao
+{
+    // Propriedades
+    private IEstrategiaDeImpressao iEstrategiaDeImpressao;
+    private FormatoDeImpressaoEnum formatoDeImpressao;
+    private object dados; // Deve suportar tanto um objeto quanto um recordset
+    private cLayout layout;
+
+    // Métodos públicos
+    public void SetPedido(cPedidoAgregado pedido) {
+        dados = pedido;
+    }
+
+    public void SetFormatoDeImpressao(FormatoDeImpressaoEnum formato) {
+        formatoDeImpressao = formato;
+    }
+
+    public void SetEstrategiaDeImpressao(IEstrategiaDeImpressao estrategiaDeImpressao) {
+        iEstrategiaDeImpressao = estrategiaDeImpressao;
+    }
+
+    public void ExecutaImpressao() {
+        // Permite que o sistema continue respondendo enquanto processa a impressão
+        System.Threading.Tasks.Task.Run(() =>
+        {
+            layout = new cLayout();
+            iEstrategiaDeImpressao.Prepara(dados, formatoDeImpressao, layout);
+            iEstrategiaDeImpressao.Executa(layout.get_Impressao());
+        });
+    }
+}

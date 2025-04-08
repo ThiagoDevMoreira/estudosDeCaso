@@ -8,12 +8,14 @@ https://drive.google.com/file/d/1--ZuA_RRptEVyunUdUDErwmiq-hPst82/view?usp=shari
 
 22-03-20205: [Caso Impressão Inteligente em Sistema Legado](https://github.com/ThiagoDevMoreira/estudosDeCaso/blob/main/Impressao_Inteligente_em_Sistema_Legado/readme.md)
 
+08/04/2025: 
+
 **Próximos:**
 
-29-03-2025 Complexidade Escondida na Pizza
+* Complexidade Escondida na Pizza
 
-05-03-2025 Integração VB6 <=> Whatsapp
+* Integração VB6 <=> Whatsapp
 
-12-03-2025 Cache e Performance
+* Cache e Performance
 
 Bem vindos!

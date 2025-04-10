@@ -34,7 +34,7 @@ O sistema não estava lidando bem com uma das principais características, natur
 
 ## O plano
 
-Dentro de uma arquitetura gerral MVC, no sentido estrutural, vou adotar a abordagem do padrão Decorator para garantir uma estrutura que possa ser ampliada a aplicação para novos nichos num futuro próximo. (Porque Decorator em vez de outro padrão? Manda um alô, a gente conversa sobe isso thiago.dev.moreira@gmail.com)
+Dentro de uma arquitetura gerral MVC, no sentido estrutural, vou adotar a abordagem do padrão Decorator para garantir que a estrutura da aplicação possa ser ampliada para novos nichos num futuro próximo. (Porque Decorator em vez de outro padrão? Manda um alô, a gente conversa sobe isso thiago.dev.moreira@gmail.com)
 
 Para o baile escolhi a abordagem do padrão State assim temos uma grande liberdade para refinar cada etapa do ciclo cliente-empresa-cliente. Ao mesmo tempo essa abordagem garante um lugar confortável para ter um fluxo "personalizado" para cada novo nicho, reaproveitando a base de código sem deteriorá-lo.
 

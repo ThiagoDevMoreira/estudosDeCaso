@@ -6,9 +6,9 @@ https://drive.google.com/file/d/1--ZuA_RRptEVyunUdUDErwmiq-hPst82/view?usp=shari
 
 **Publicados:**
 
-22-03-20205: [Caso Impressão Inteligente em Sistema Legado](https://github.com/ThiagoDevMoreira/estudosDeCaso/blob/main/Impressao_Inteligente_em_Sistema_Legado/readme.md)
+22-03-20205: [Caso Impressão Inteligente em Sistema Legado](https://github.com/ThiagoDevMoreira/estudosDeCaso/blob/main/Impressao_Inteligente_em_Sistema_Legado)
 
-08/04/2025: 
+08/04/2025:  [Ordens de Serviço - O Segredo do Baile](https://github.com/ThiagoDevMoreira/estudosDeCaso/tree/main/Ordens_de_Servico_o_Segredo_do%20Baile)
 
 **Próximos:**
 
